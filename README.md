@@ -5,7 +5,7 @@ dotnet-macios-issues-23101
 - Sentry: https://github.com/getsentry/sentry-dotnet/issues/4292
 - .NET: https://github.com/dotnet/macios/issues/23101
 
-## Repro
+## Repro 1
 1. On Windows
 1. `dotnet --version`
    - ```
@@ -42,3 +42,21 @@ dotnet-macios-issues-23101
 1. Build: Failed
    - `dotnet build`
    - _Visual Studio 2022 17.14.6 (June 2025)_
+
+## Repro 2
+1. example [Repro 1](#repro-1)
+1. with _Microsoft Visual Studio Enterprise 2022 (64-bit) - Current_, _Version 17.14.5_
+1. `dotnet --version`
+   - ```
+     9.0.301
+     ```
+1. `dotnet build`
+   - Passed
+1. update to _Microsoft Visual Studio Enterprise 2022 (64-bit) - Current_, _Version 17.14.6 (June 2025)_
+1. `dotnet --version`
+   - ```
+     9.0.301
+     ```
+1. `dotnet workload restore`
+1. `dotnet build`
+   - Failed
