@@ -13,6 +13,10 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+			})
+			.UseSentry(options =>
+			{
+				options.Dsn = "<Dsn>";
 			});
 
 #if DEBUG
