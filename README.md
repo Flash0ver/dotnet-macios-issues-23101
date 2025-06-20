@@ -60,3 +60,11 @@ dotnet-macios-issues-23101
 1. `dotnet workload restore`
 1. `dotnet build`
    - Failed
+
+## .binlog
+- See [/binlog/msbuild.redacted.binlog](./binlog/msbuild.redacted.binlog)
+- See also https://msbuildlog.com/
+1. `dotnet clean`
+1. `dotnet build -bl`
+1. `dotnet tool install binlogtool --global`
+1. `binlogtool redact`
