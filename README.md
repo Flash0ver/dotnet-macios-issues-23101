@@ -68,3 +68,24 @@ dotnet-macios-issues-23101
 1. `dotnet build -bl`
 1. `dotnet tool install binlogtool --global`
 1. `binlogtool redact`
+
+## Repro 3
+- reproducible after installing _Visual Studio 17.14.7_
+
+## Build
+- `dotnet build --framework net9.0-android`
+  - _Build succeeded_
+- `dotnet build --framework net9.0-ios`
+  - _Build succeeded_
+- `dotnet build --framework net9.0-windows10.0.19041.0`
+  - _Build succeeded_
+- `dotnet build --framework net9.0-maccatalyst`
+  - **Build failed**
+    ```Text
+    C:\Program Files\dotnet\packs\Microsoft.MacCatalyst.Sdk.net9.0_18.5\18.5.9199\tools\msbuild\Xamarin.Shared.targets(153,3): error : Can't process the zip file 'C:\Users\REDACTED__Username\.nuget\packages\sentry.bindings.cocoa\5.11.0\lib\net8.0-maccatalyst17.0\Sentry.Bindings.Cocoa.resources.zip' on this platform: the file 'Sentry-Dynamic.xcframework/ios-arm64_arm64e_x86_64-maccatalyst/Sentry.framework/PrivateHeaders' is a symlink.
+    C:\Program Files\dotnet\packs\Microsoft.MacCatalyst.Sdk.net9.0_18.5\18.5.9199\tools\msbuild\Xamarin.Shared.targets(153,3): error : Can't process the zip file 'C:\Users\REDACTED__Username\.nuget\packages\sentry.bindings.cocoa\5.11.0\lib\net8.0-maccatalyst17.0\Sentry.Bindings.Cocoa.resources.zip' on this platform: the file 'Sentry-Dynamic.xcframework/ios-arm64_arm64e_x86_64-maccatalyst/Sentry.framework/Resources' is a symlink.
+    C:\Program Files\dotnet\packs\Microsoft.MacCatalyst.Sdk.net9.0_18.5\18.5.9199\tools\msbuild\Xamarin.Shared.targets(153,3): error : Can't process the zip file 'C:\Users\REDACTED__Username\.nuget\packages\sentry.bindings.cocoa\5.11.0\lib\net8.0-maccatalyst17.0\Sentry.Bindings.Cocoa.resources.zip' on this platform: the file 'Sentry-Dynamic.xcframework/ios-arm64_arm64e_x86_64-maccatalyst/Sentry.framework/Versions/Current' is a symlink.
+    C:\Program Files\dotnet\packs\Microsoft.MacCatalyst.Sdk.net9.0_18.5\18.5.9199\tools\msbuild\Xamarin.Shared.targets(153,3): error : Can't process the zip file 'C:\Users\REDACTED__Username\.nuget\packages\sentry.bindings.cocoa\5.11.0\lib\net8.0-maccatalyst17.0\Sentry.Bindings.Cocoa.resources.zip' on this platform: the file 'Sentry-Dynamic.xcframework/ios-arm64_arm64e_x86_64-maccatalyst/Sentry.framework/Headers' is a symlink.
+    C:\Program Files\dotnet\packs\Microsoft.MacCatalyst.Sdk.net9.0_18.5\18.5.9199\tools\msbuild\Xamarin.Shared.targets(153,3): error : Can't process the zip file 'C:\Users\REDACTED__Username\.nuget\packages\sentry.bindings.cocoa\5.11.0\lib\net8.0-maccatalyst17.0\Sentry.Bindings.Cocoa.resources.zip' on this platform: the file 'Sentry-Dynamic.xcframework/ios-arm64_arm64e_x86_64-maccatalyst/Sentry.framework/Sentry' is a symlink.
+    C:\Program Files\dotnet\packs\Microsoft.MacCatalyst.Sdk.net9.0_18.5\18.5.9199\tools\msbuild\Xamarin.Shared.targets(153,3): error : Can't process the zip file 'C:\Users\REDACTED__Username\.nuget\packages\sentry.bindings.cocoa\5.11.0\lib\net8.0-maccatalyst17.0\Sentry.Bindings.Cocoa.resources.zip' on this platform: the file 'Sentry-Dynamic.xcframework/ios-arm64_arm64e_x86_64-maccatalyst/Sentry.framework/Modules' is a symlink.
+    ```
